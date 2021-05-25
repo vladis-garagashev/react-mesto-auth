@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 
-function Login() {
+function Register() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +21,7 @@ function Login() {
 
   return (
     <div className="auth">
-      <h1 className="auth__header">Вход</h1>
+      <h1 className="auth__header">Регистрация</h1>
 
       <form className="form form_type_auth" method="POST" name="login" noValidate>
           <section className="form__section">
@@ -33,11 +33,17 @@ function Login() {
             <span className="login__form-item_error" id="password-error"></span>
           </section>
 
-          <button className="form__submit-button form__submit-button_type_white" type="submit">Войти</button>
+          <button className="form__submit-button form__submit-button_type_white" type="submit">Зарегистрироваться</button>
         </form>
+
+        <div className="auth__signin">
+          <p className="auth__signin-caption">Уже зарегистрированы?</p>
+          <Link to="login" className="auth__login-link">Войти</Link>
+        </div>
+
     </div>
   );
 
 };
 
-export default withRouter(Login);
+export default withRouter(Register);
