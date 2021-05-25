@@ -1,0 +1,17 @@
+.form__item_type_auth {
+  color: #fff;
+  border-bottom: 2px solid #ccc;
+};
+
+.form__item_type_auth::placeholder {
+  color: #ccc;
+};
+.form__item_type_auth::-webkit-input-placeholder {
+  color: #ccc;
+};
+.form__item_type_auth::-moz-placeholder {
+  color: #ccc;
+};
+.form__item_type_auth::-ms-input-placeholder {
+  color: #ccc;
+};

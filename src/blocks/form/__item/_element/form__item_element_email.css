@@ -1,0 +1,9 @@
+.form__item_element_email {
+  margin-top: 50px;
+};
+
+@media screen and (max-width: 767px) {
+  .form__item_element_email {
+    margin-top: 40px;
+  };
+};

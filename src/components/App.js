@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Header from './Header';
+import Login from './Login';
 import Main from './Main';
 import Footer from './Footer';
 import EditProfilePopup from './EditProfilePopup';
@@ -162,16 +163,17 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Header/>
 
-        <Main
+        <Login/>
+        {/* <Main
           cards={cards}
           onCardLike={handleCardLike}
           onCardDelete={handleCardDelete}
           onEditProfile={handleEditProfileClick}
           onEditAvatar={handleEditAvatarClick}
           onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}/>
+          onCardClick={handleCardClick}/> */}
 
-        <Footer/>
+        {/* <Footer/> */}
 
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading}/>
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isLoading}/>
