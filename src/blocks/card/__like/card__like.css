@@ -1,0 +1,6 @@
+.card__like {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  row-gap: 3px;
+  align-items: center;
+}

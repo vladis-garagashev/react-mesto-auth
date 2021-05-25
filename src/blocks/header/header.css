@@ -1,0 +1,28 @@
+.header {
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 72px;
+  padding-top: 45px;
+
+}
+
+.header::after {
+  content: '';
+  margin-top: 41px;
+  display: block;
+  height: 1px;
+  background: #545454;
+  opacity: .7;
+
+}
+
+@media screen and (max-width: 879px) {
+  .header {
+    min-height: 56px;
+    padding-top: 28px;
+  }
+
+  .header::after {
+    margin-top: 31.6px;
+  }
+}

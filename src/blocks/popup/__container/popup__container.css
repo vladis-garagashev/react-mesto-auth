@@ -1,0 +1,12 @@
+.popup__container {
+  width: auto;
+  height: auto;
+  margin: 0 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup__container:hover {
+  cursor: default;
+}

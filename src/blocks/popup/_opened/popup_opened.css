@@ -1,0 +1,7 @@
+.popup_opened {
+  opacity: 1;
+  transform: translateY(0);
+
+  transition-delay: .2s, 0s;
+
+}

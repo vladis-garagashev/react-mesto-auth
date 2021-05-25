@@ -1,0 +1,21 @@
+.profile__info {
+  display: grid;
+  column-gap: 18px;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'name button'
+    'about about';
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__info {
+    margin-top: 26px;
+    column-gap: 10px;
+    grid-template-columns: auto;
+    grid-template-areas:
+      '. name button .'
+      'about about about about';
+
+  }
+}
+

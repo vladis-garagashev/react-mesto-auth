@@ -1,0 +1,20 @@
+.popup {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform:translateY(-100vh);
+  cursor: pointer;
+
+  transition-property: opacity, transform;
+  transition-duration: .2s, 0s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s, .1s;
+
+}

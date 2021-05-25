@@ -1,0 +1,16 @@
+.logo {
+  width: 142px;
+  height: 33px;
+  align-self: flex-start;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 879px) {
+  .logo {
+    width: 103.75px;
+    height: 24.4px;
+    margin-left: 27px;
+  }
+}

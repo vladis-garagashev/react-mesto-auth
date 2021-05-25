@@ -1,0 +1,14 @@
+.form__item-error {
+  width: 100%;
+  color: #f00;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+
+  opacity: 0;
+  transition: opacity .2s;
+
+}
