@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Route, Switch, Redirect } from "react-router-dom";
 import Header from './Header';
 import Login from './Login';
 import Register from './Register';
@@ -10,6 +11,7 @@ import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPopup';
 import ImagePopup from './ImagePopup';
 import InfoTooltip from './InfoTooltip';
+import ProtectedRoute from './ProtectedRoute';
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -22,12 +24,14 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] =useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupOpen] = useState(false);
-  const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(true);
+  const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(false);
   const [selectedDeleteCard, setSelectedDeleteCard] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(true);
 
+
+  const [isLoggedIn, setLoggedIn] = useState(false);
   //-----------------------------------
 
   useEffect(() => {
@@ -172,17 +176,39 @@ function App() {
 
       <CurrentUserContext.Provider value={currentUser}>
         <Header/>
+        <Switch>
+          <ProtectedRoute
+            exact path="/"
+            loggedIn={isLoggedIn}
+            component={Main}
+            cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
+            onEditProfile={handleEditProfileClick}
+            onEditAvatar={handleEditAvatarClick}
+            onAddPlace={handleAddPlaceClick}
+            onCardClick={handleCardClick}
+          />
 
-        <Main
+          <Route path="/sign-up">
+            <Register/>
+          </Route>
+
+          <Route path="/sign-in">
+            <Login/>
+          </Route>
+
+        </Switch>
+
+        {/* <Main
           cards={cards}
           onCardLike={handleCardLike}
           onCardDelete={handleCardDelete}
           onEditProfile={handleEditProfileClick}
           onEditAvatar={handleEditAvatarClick}
           onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}/>
-
-        <Footer/>
+          onCardClick={handleCardClick}/> */}
+        {isLoggedIn && <Footer/>}
 
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading}/>
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isLoading}/>
