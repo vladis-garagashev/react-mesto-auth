@@ -9,6 +9,7 @@ import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPopup';
 import ImagePopup from './ImagePopup';
+import InfoTooltip from './InfoTooltip';
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -21,9 +22,11 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] =useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupOpen] = useState(false);
+  const [isInfoTooltipPopupOpen, setInfoTooltipPopupOpen] = useState(true);
   const [selectedDeleteCard, setSelectedDeleteCard] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isLoading, setLoading] = useState(false);
+  const [isSuccess, setSuccess] = useState(true);
 
   //-----------------------------------
 
@@ -64,6 +67,11 @@ function App() {
   //-----------------------------------
 
   // Обработчики открытия и закрытия попапов
+
+  function handleInfoTooltipOpen() {
+    setInfoTooltipPopupOpen(true);
+  };
+
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
   };
@@ -90,6 +98,7 @@ function App() {
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
     setDeleteCardPopupOpen(false);
+    setInfoTooltipPopupOpen(false);
     setSelectedDeleteCard(null);
     setSelectedCard(null);
   };
@@ -164,8 +173,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Header/>
 
-        <Register/>
-        {/* <Main
+        <Main
           cards={cards}
           onCardLike={handleCardLike}
           onCardDelete={handleCardDelete}
@@ -174,13 +182,14 @@ function App() {
           onAddPlace={handleAddPlaceClick}
           onCardClick={handleCardClick}/>
 
-        <Footer/> */}
+        <Footer/>
 
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading}/>
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isLoading}/>
         <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} isLoading={isLoading}/>
         <DeleteCardPopup isOpen={isDeleteCardPopupOpen} onClose={closeAllPopups} onCardDelete={handleCardDeleteSubmit} isLoading={isLoading} card={selectedDeleteCard}/>
         <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
+        <InfoTooltip isSuccess={isSuccess} isOpen={isInfoTooltipPopupOpen} onClose={closeAllPopups}/>
 
       </CurrentUserContext.Provider>
 

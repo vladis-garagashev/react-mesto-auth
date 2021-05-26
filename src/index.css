@@ -73,3 +73,6 @@
 @import url(./blocks/figure/__image/figure__image.css);
 @import url(./blocks/figure/__caption/figure__caption.css);
 
+@import url(./blocks/info/info.css);
+@import url(./blocks/info/__image/info__image.css);
+@import url(./blocks/info/__caption/info__caption.css);
