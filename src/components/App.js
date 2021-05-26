@@ -175,7 +175,7 @@ function App() {
     <div className="page__container">
 
       <CurrentUserContext.Provider value={currentUser}>
-        <Header/>
+        <Header loggedIn={isLoggedIn}/>
         <Switch>
           <ProtectedRoute
             exact path="/"
@@ -200,14 +200,6 @@ function App() {
 
         </Switch>
 
-        {/* <Main
-          cards={cards}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-          onEditProfile={handleEditProfileClick}
-          onEditAvatar={handleEditAvatarClick}
-          onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}/> */}
         {isLoggedIn && <Footer/>}
 
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading}/>
@@ -218,6 +210,15 @@ function App() {
         <InfoTooltip isSuccess={isSuccess} isOpen={isInfoTooltipPopupOpen} onClose={closeAllPopups}/>
 
       </CurrentUserContext.Provider>
+
+        {/* <Main
+          cards={cards}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
+          onEditProfile={handleEditProfileClick}
+          onEditAvatar={handleEditAvatarClick}
+          onAddPlace={handleAddPlaceClick}
+          onCardClick={handleCardClick}/> */}
 
     </div>
   );

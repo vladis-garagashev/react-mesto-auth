@@ -3,7 +3,12 @@
   width: 100%;
   min-height: 72px;
   padding-top: 45px;
-
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'logo menu'
+    'line line';
 }
 
 .header::after {
@@ -13,7 +18,7 @@
   height: 1px;
   background: #545454;
   opacity: .7;
-
+  grid-area: line;
 }
 
 @media screen and (max-width: 879px) {

@@ -38,7 +38,7 @@ function Register() {
 
         <div className="auth__signin">
           <p className="auth__signin-caption">Уже зарегистрированы?</p>
-          <Link to="login" className="auth__login-link">Войти</Link>
+          <Link to="sign-in" className="auth__login-link">Войти</Link>
         </div>
 
     </div>
