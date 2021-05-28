@@ -8,6 +8,7 @@
 
 @import url(./blocks/header/header.css);
 @import url(./blocks/menu/menu.css);
+@import url(./blocks/menu/_opened/menu_opened.css);
 @import url(./blocks/menu/__user-info/menu__user-info.css);
 @import url(./blocks/menu/__link/menu__link.css);
 
@@ -21,6 +22,8 @@
 @import url(./blocks/auth/__login-link/auth__login-link.css);
 
 @import url(./blocks/button/button.css);
+@import url(./blocks/button/_type/button_type_menu.css);
+@import url(./blocks/button/_type/_active/button_type_menu_active.css);
 @import url(./blocks/button/_type/button_type_edit.css);
 @import url(./blocks/button/_type/button_type_edit-avatar.css);
 @import url(./blocks/button/_type/button_type_add.css);

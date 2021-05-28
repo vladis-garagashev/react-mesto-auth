@@ -2,7 +2,35 @@
   display: grid;
   column-gap: 24px;
   grid-template-columns: auto 1fr;
-  align-items: center;
   grid-area: menu;
   justify-self: end;
+}
+
+@media screen and (max-width: 879px) {
+  .menu {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .menu {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 12px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .menu:after {
+    width: 100%;
+    content: '';
+    margin-bottom: 28px;
+    display: block;
+    height: 1px;
+    background: #545454;
+    opacity: .7;
+  }
+
 }

@@ -1,0 +1,5 @@
+.button_type_menu_active {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../../../images/close-icon.svg);
+}

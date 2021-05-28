@@ -1,0 +1,21 @@
+.button_type_menu {
+  width: 24px;
+  height: 21px;
+  background: url('../../../images/menu__icon.svg') center no-repeat;
+  grid-area: button;
+  justify-self: flex-end;
+  margin-right: 30px;
+  display: none;
+}
+
+.button_type_menu:focus {
+  outline: none;
+
+}
+
+@media screen and (max-width: 767px) {
+  .button_type_menu {
+    display: block;
+  }
+
+}

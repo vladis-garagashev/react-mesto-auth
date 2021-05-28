@@ -26,6 +26,7 @@
     width: 20px;
     height: 20px;
     top: -43px;
-    left: 130px;
+    left: 50%;
+    transform: translate(-50%);
   }
 }

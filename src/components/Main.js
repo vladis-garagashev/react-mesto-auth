@@ -5,13 +5,13 @@ import Header from './Header';
 import Footer from './Footer';
 
 
-function Main({cards, onCardLike, onCardDelete, onEditProfile, onEditAvatar, onAddPlace, onCardClick, loggedIn, handleLogout, userData}) {
+function Main({cards, onCardLike, onCardDelete, onEditProfile, onEditAvatar, onAddPlace, onCardClick, loggedIn, handleLogout, userData, isMenuOpen, onMenuClick}) {
 
   const currentUser = useContext(CurrentUserContext);
 
   return (
     <>
-      <Header loggedIn={loggedIn} userData={userData} handleLogout={handleLogout}/>
+      <Header loggedIn={loggedIn} userData={userData} handleLogout={handleLogout} isOpen={isMenuOpen} handleMenuClick={onMenuClick}/>
       <main className="content">
 
         <section className="profile">

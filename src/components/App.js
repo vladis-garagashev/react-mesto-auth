@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
-import Header from './Header';
 import Login from './Login';
 import Register from './Register';
 import Main from './Main';
-import Footer from './Footer';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
@@ -28,6 +26,8 @@ function App() {
   const [selectedDeleteCard, setSelectedDeleteCard] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [isLoading, setLoading] = useState(false);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const [userData, setUserData] = useState({
     email: '',
@@ -241,6 +241,15 @@ function App() {
 
   //-----------------------------------
 
+  // Обработчик открытия и закрытия меню
+  function handleMenuButtonClick() {
+    setIsMenuOpen(!isMenuOpen)
+    // Не могу понять как сделать, чтоб isMenuOpen становился false, когда исчезает иконка
+    // Можете обьяснить?)
+  };
+
+  //-----------------------------------
+
   return (
     <div className="page__container">
 
@@ -259,6 +268,8 @@ function App() {
             onCardClick={handleCardClick}
             handleLogout={handleLogout}
             userData={userData}
+            isMenuOpen={isMenuOpen}
+            onMenuClick={handleMenuButtonClick}
           />
 
           <Route path="/sign-up">

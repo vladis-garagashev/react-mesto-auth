@@ -1,6 +1,15 @@
 .menu__user-info {
+  margin: 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
+
+}
+
+@media screen and (max-width: 767px) {
+  .menu__user-info {
+    width: 100%;
+    text-align: center;
+  }
 
 }
