@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import * as auth from '../utils/auth';
 
 
 function Register() {
@@ -19,11 +20,21 @@ function Register() {
 
   //-----------------------------------
 
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    auth.register(password, email)
+      .then(res => {
+        console.log(res);
+      })
+  }
+
+  //-----------------------------------
+
   return (
     <div className="auth">
       <h1 className="auth__header">Регистрация</h1>
 
-      <form className="form form_type_auth" method="POST" name="login" noValidate>
+      <form className="form form_type_auth" method="POST" name="login" noValidate onSubmit={handleSubmit}>
           <section className="form__section">
             <input className="form__item form__item_type_auth form__item_element_email " type="email" name="email" id="email" placeholder="Email" value={email || ''} onChange={handleEmailChange} required/>
             <span className="login__form-item_error" id="email-error"></span>

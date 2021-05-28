@@ -8,12 +8,7 @@ class Api {
   //-----------------------------------
 
   // Функция обработки ответа промиса
-  _handleResponse(res)  {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка ${res.status}`);
-  }
+  _handleResponse = res => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`);
 
   //-----------------------------------
 
