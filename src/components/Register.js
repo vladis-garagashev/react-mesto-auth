@@ -12,17 +12,18 @@ function Register() {
 
   //-----------------------------------
 
-  // Обработчики изменения инпутов обновляют стейты
-  function handleChange(e) {
-    const {name, value} = e.target;
+  // Обработчик изменения инпутов
+  function handleChange(evt) {
+    const {name, value} = evt.target;
     setData({
       ...data,
       [name] : value
-    })
+    });
   };
 
   //-----------------------------------
 
+  // Обработчик сабмита формы
   function handleSubmit(evt) {
     evt.preventDefault();
     const {email, password} = data;
@@ -31,7 +32,7 @@ function Register() {
       .then(res => {
         console.log(res);
       }) */
-  }
+  };
 
   //-----------------------------------
 
