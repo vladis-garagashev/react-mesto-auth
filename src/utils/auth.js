@@ -31,7 +31,7 @@ export const authorise = (password, email) => {
       'email': email
     })
   }).then(res => handleResponse(res));
-};
+}; 
 
 export const getContent = (jwt) => {
   return fetch(`${BASE_URL}//users/me`, {
