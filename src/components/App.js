@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
 import Login from './Login';
 import Register from './Register';
 import Main from './Main';
@@ -10,9 +12,9 @@ import DeleteCardPopup from './DeleteCardPopup';
 import ImagePopup from './ImagePopup';
 import InfoTooltip from './InfoTooltip';
 import ProtectedRoute from './ProtectedRoute';
+
 import api from '../utils/api';
 import * as auth from '../utils/auth';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
 function App() {
@@ -293,15 +295,6 @@ function App() {
         <InfoTooltip isSuccess={isSuccess} isOpen={isInfoTooltipPopupOpen} onClose={closeInfoTooltipPopup}/>
 
       </CurrentUserContext.Provider>
-
-        {/* <Main
-          cards={cards}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-          onEditProfile={handleEditProfileClick}
-          onEditAvatar={handleEditAvatarClick}
-          onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}/> */}
 
     </div>
   );

@@ -34,7 +34,7 @@ function Register({handleRegister}) {
 
   return (
     <>
-      <Header linkText='Войти' redirect='/sign-in'/>
+      <Header linkText='Войти' redirectPath='/sign-in'/>
       <div className="auth">
         <h1 className="auth__header">Регистрация</h1>
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../images/header__logo.svg';
 
 
-function Header({loggedIn, userData, handleLogout, linkText, redirect, handleMenuClick, isOpen}) {
+function Header({loggedIn, userData, handleLogout, linkText, redirectPath, handleMenuClick, isOpen}) {
 
   const menuClassName = (
     `menu ${isOpen && 'menu_opened'}`
@@ -18,7 +18,7 @@ function Header({loggedIn, userData, handleLogout, linkText, redirect, handleMen
       <img className="logo" src={logo} alt="Mesto"/>
       <nav className={menuClassName}>
         {loggedIn && <p className="menu__user-info">{userData.email}</p>}
-        {loggedIn ? <Link className="menu__link" to="sign-in" onClick={handleLogout}>Выйти</Link> : <Link className="menu__link" to={redirect}>{linkText}</Link>}
+        {loggedIn ? <Link className="menu__link" to="sign-in" onClick={handleLogout}>Выйти</Link> : <Link className="menu__link" to={redirectPath}>{linkText}</Link>}
       </nav>
       <button className={buttonClassName} onClick={handleMenuClick} ></button>
     </header>

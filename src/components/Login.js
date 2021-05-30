@@ -33,7 +33,7 @@ function Login({handleLogin}) {
 
   return (
     <>
-      <Header linkText='Регистрация' redirect='/sign-up'/>
+      <Header linkText='Регистрация' redirectPath='/sign-up'/>
       <div className="auth">
         <h1 className="auth__header">Вход</h1>
 
