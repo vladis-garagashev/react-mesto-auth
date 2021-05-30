@@ -10,12 +10,3 @@
 .menu__link:hover {
   opacity: .6;
 }
-
-@media screen and (max-width: 767px) {
-  .menu__link {
-    width: 100%;
-    text-align: center;
-    margin:18px 0 40px
-  }
-
-}

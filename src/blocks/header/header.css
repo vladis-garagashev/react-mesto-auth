@@ -31,14 +31,3 @@
     margin-top: 31.6px;
   }
 }
-
-@media screen and (max-width: 767px) {
-  .header {
-    grid-template-areas:
-      'menu menu'
-      'logo button'
-      'after after';
-
-  }
-
-}
