@@ -71,4 +71,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Ссылка на проект
 
-https://vladis-garagashev.github.io/mesto-react/index.html
+https://vladis-garagashev.github.io/react-mesto-auth/index.html
