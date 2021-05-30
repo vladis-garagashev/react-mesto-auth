@@ -74,6 +74,7 @@ function App() {
 
   // Функция регистрации пользователя
   function handleRegister({email, password}) {
+    setLoading(true)
     auth.register(password, email)
       .then(data => {
         const { email, _id } = data.data;
@@ -81,11 +82,15 @@ function App() {
         setSuccess(true)
         handleInfoTooltipOpen(true);
       })
-      .catch(handleError);
+      .catch(handleError)
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   // Функция авторизации пользователя
   function handleLogin({email, password}) {
+    setLoading(true)
     auth.authorise(password, email)
       .then(data => {
         const { token } = data;
@@ -94,7 +99,10 @@ function App() {
         setLoggedIn(true);
         history.push('/');
       })
-      .catch(handleError);
+      .catch(handleError)
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   // Функция деавторизации пользователя
@@ -275,11 +283,11 @@ function App() {
           />
 
           <Route path="/sign-up">
-            <Register handleRegister={handleRegister}/>
+            <Register handleRegister={handleRegister} isLoading={isLoading}/>
           </Route>
 
           <Route path="/sign-in">
-            <Login handleLogin={handleLogin}/>
+            <Login handleLogin={handleLogin} isLoading={isLoading}/>
           </Route>
           <Route exact path="/">
             {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}

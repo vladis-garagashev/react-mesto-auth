@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 
 
-function Register({handleRegister}) {
+function Register({handleRegister, isLoading}) {
 
   const [data, setData] = useState({
     email: '',
@@ -48,7 +48,7 @@ function Register({handleRegister}) {
               <span className="login__form-item_error" id="password-error"></span>
             </section>
 
-            <button className="form__submit-button form__submit-button_type_white" type="submit">Зарегистрироваться</button>
+            <button className="form__submit-button form__submit-button_type_white" type="submit">{isLoading? 'Загрузка...' : 'Зарегестрироваться'}</button>
           </form>
 
           <div className="auth__signin">

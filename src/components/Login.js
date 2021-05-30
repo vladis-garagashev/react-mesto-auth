@@ -2,7 +2,7 @@ import {useState} from 'react';
 import Header from './Header';
 
 
-function Login({handleLogin}) {
+function Login({handleLogin, isLoading}) {
 
   const [data, setData] = useState({
     email: '',
@@ -47,7 +47,7 @@ function Login({handleLogin}) {
               <span className="login__form-item_error" id="password-error"></span>
             </section>
 
-            <button className="form__submit-button form__submit-button_type_white" type="submit">Войти</button>
+            <button className="form__submit-button form__submit-button_type_white" type="submit">{isLoading? 'Загрузка...' : 'Войти'}</button>
           </form>
       </div>
     </>
