@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import useMediaQuery from 'react-hook-media-query'
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 import ProtectedRoute from './ProtectedRoute';
@@ -42,6 +43,8 @@ function App() {
 
   const history = useHistory();
 
+  const mobileWidth = useMediaQuery('(max-width: 767px)')
+
   //-----------------------------------
 
   useEffect(() => {
@@ -63,7 +66,12 @@ function App() {
       })
       .catch(error => console.log(error));
 
-  }, []);
+    // Проверяем ширину экрана
+    if (!mobileWidth) {
+      setIsMenuOpen(false);
+    };
+
+  }, [mobileWidth]);
 
   //-----------------------------------
 
@@ -290,7 +298,7 @@ function App() {
           <Route path="/sign-in">
             <Login handleLogin={handleLogin} isLoading={isLoading}/>
           </Route>
-          <Route exact path="/">
+          <Route path="/">
             {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
           </Route>
 
