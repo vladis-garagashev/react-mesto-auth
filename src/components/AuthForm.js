@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import Header from './Header';
 
 
 function AuthForm({handleAuth, isLoading, btnText}) {
