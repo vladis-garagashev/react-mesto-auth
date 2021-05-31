@@ -263,8 +263,6 @@ function App() {
   // Обработчик открытия и закрытия меню
   function handleMenuButtonClick() {
     setIsMenuOpen(!isMenuOpen)
-    // Не могу понять как сделать, чтоб isMenuOpen становился false, когда исчезает иконка
-    // Можете обьяснить?)
   };
 
   //-----------------------------------

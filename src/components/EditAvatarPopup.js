@@ -1,10 +1,31 @@
-import { useRef } from 'react';
+import { useEffect, useState } from 'react';
 import PopupWithForm from './PopupWithForm';
 
 
 function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, isLoading}) {
 
-  const avatarRef = useRef();
+  const [data, setData] = useState({
+    avatar: ''
+  });
+
+  //-----------------------------------
+
+  useEffect(() => {
+    setData({
+      avatar : ''
+    });
+  }, [isOpen])
+
+  //-----------------------------------
+
+  // Обработчик изменения инпутов
+  function handleChange(evt) {
+    const {name, value} = evt.target;
+    setData({
+      ...data,
+      [name] : value
+    });
+  };
 
   //-----------------------------------
 
@@ -13,7 +34,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, isLoading}) {
     e.preventDefault();
 
     onUpdateAvatar({
-      avatar: avatarRef.current.value
+      avatar: data.avatar
     });
   }
 
@@ -22,7 +43,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, isLoading}) {
   return (
     <PopupWithForm title="Обновить аватар" name="edit-avatar" btnText={isLoading ? 'Сохранение...' : 'Сохранить'} isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
       <section className="form__section">
-        <input className="form__item form__item_element_image-link" type="url" name="avatar" id="avatar" placeholder="Ссылка на картинку"required ref={avatarRef}/>
+        <input className="form__item form__item_element_image-link" type="url" name="avatar" id="avatar" placeholder="Ссылка на картинку" value={data.avatar} onChange={handleChange} required/>
         <span className="form__item-error" id="avatar-error"></span>
       </section>
     </PopupWithForm>
