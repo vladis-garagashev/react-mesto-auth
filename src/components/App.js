@@ -2,16 +2,17 @@ import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
+import ProtectedRoute from './ProtectedRoute';
+import Main from './Main';
 import Login from './Login';
 import Register from './Register';
-import Main from './Main';
+import Footer from './Footer';
+import InfoTooltip from './InfoTooltip';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPopup';
 import ImagePopup from './ImagePopup';
-import InfoTooltip from './InfoTooltip';
-import ProtectedRoute from './ProtectedRoute';
 
 import api from '../utils/api';
 import * as auth from '../utils/auth';
@@ -294,6 +295,8 @@ function App() {
           </Route>
 
         </Switch>
+
+        <Footer/>
 
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoading={isLoading}/>
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} isLoading={isLoading}/>

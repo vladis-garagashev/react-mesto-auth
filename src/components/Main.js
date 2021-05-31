@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import Card from './Card';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 import Header from './Header';
-import Footer from './Footer';
 
 
 function Main({cards, onCardLike, onCardDelete, onEditProfile, onEditAvatar, onAddPlace, onCardClick, loggedIn, handleLogout, userData, isMenuOpen, onMenuClick}) {
@@ -13,7 +12,6 @@ function Main({cards, onCardLike, onCardDelete, onEditProfile, onEditAvatar, onA
     <>
       <Header loggedIn={loggedIn} userData={userData} handleLogout={handleLogout} isOpen={isMenuOpen} handleMenuClick={onMenuClick}/>
       <main className="content">
-
         <section className="profile">
           <div className="profile__avatar">
             <img className="profile__avatar-image" src={currentUser?.avatar} alt={currentUser?.name}/>
@@ -56,9 +54,7 @@ function Main({cards, onCardLike, onCardDelete, onEditProfile, onEditAvatar, onA
             ))}
           </ul>
         </section>
-
       </main>
-      <Footer/>
     </>
   );
 
