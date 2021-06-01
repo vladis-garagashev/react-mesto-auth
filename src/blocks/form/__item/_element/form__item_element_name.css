@@ -1,11 +1,9 @@
 .form__item_element_name {
   margin-top: 54px;
-
 }
 
 @media screen and (max-width: 767px) {
   .form__item_element_name {
     margin-top: 75px;
-
   }
 }
