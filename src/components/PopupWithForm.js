@@ -4,9 +4,9 @@ import React from 'react';
 function PopupWithForm({name, title, btnText, children, isOpen, onClose, onSubmit}) {
 
   return (
-    <article className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}>
+    <article className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`} onClick={onClose}>
 
-      <div className="popup__container">
+      <div className="popup__container" onClick={e => e.stopPropagation()}>
         <form className="form" method="POST" name={name} noValidate onSubmit={onSubmit}>
           <h3 className="form__heading">{title}</h3>
 

@@ -90,6 +90,7 @@ function App() {
         setUserData({ email, _id  });
         setSuccess(true)
         handleInfoTooltipOpen(true);
+        history.push('/sign-in');
       })
       .catch(handleError)
       .finally(() => {
@@ -189,11 +190,14 @@ function App() {
     setDeleteCardPopupOpen(false);
     setSelectedDeleteCard(null);
     setSelectedCard(null);
+    setInfoTooltipPopupOpen(false);
   };
 
-  function closeInfoTooltipPopup() {
-    setInfoTooltipPopupOpen(false);
-    {isSuccess && history.push('/sign-in')};
+  function handleEscClose(evt) {
+    const escapeKey = 'Escape';
+    if (evt.key === escapeKey) {
+      closeAllPopups()
+    };
   };
 
   //-----------------------------------
@@ -255,7 +259,6 @@ function App() {
       .finally(() => {
         setLoading(false);
       });
-
   };
 
   //-----------------------------------
@@ -268,7 +271,7 @@ function App() {
   //-----------------------------------
 
   return (
-    <div className="page__container">
+    <div className="page__container" onKeyDown={handleEscClose}>
 
       <CurrentUserContext.Provider value={currentUser}>
         <Switch>
@@ -309,7 +312,7 @@ function App() {
         <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} isLoading={isLoading}/>
         <DeleteCardPopup isOpen={isDeleteCardPopupOpen} onClose={closeAllPopups} onCardDelete={handleCardDeleteSubmit} isLoading={isLoading} card={selectedDeleteCard}/>
         <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
-        <InfoTooltip isSuccess={isSuccess} isOpen={isInfoTooltipPopupOpen} onClose={closeInfoTooltipPopup}/>
+        <InfoTooltip isSuccess={isSuccess} isOpen={isInfoTooltipPopupOpen} onClose={closeAllPopups}/>
 
       </CurrentUserContext.Provider>
 

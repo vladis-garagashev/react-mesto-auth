@@ -8,9 +8,9 @@ function InfoTooltip({onClose, isOpen, isSuccess}) {
   const caption = isSuccess ? 'Вы успешно зарегистрировались!' : 'Что-то пошло не так! Попробуйте ещё раз.';
 
   return (
-    <article className={`popup ${isOpen ? 'popup_opened' : ''}`} >
+    <article className={`popup ${isOpen ? 'popup_opened' : ''}`} onClick={onClose}>
 
-      <div className="popup__container">
+      <div className="popup__container" onClick={e => e.stopPropagation()}>
         <div className="info">
           <img className="info__image" src={image} alt={caption}/>
           <p className="info__caption">{caption}</p>

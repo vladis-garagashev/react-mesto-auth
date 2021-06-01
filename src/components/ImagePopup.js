@@ -4,9 +4,9 @@ import React from 'react';
 function ImagePopup({card, onClose}) {
 
   return (
-    <article className={`popup ${card ? 'popup_opened' : ''}`} >
+    <article className={`popup ${card ? 'popup_opened' : ''}`} onClick={onClose}>
 
-      <div className="popup__container">
+      <div className="popup__container" onClick={e => e.stopPropagation()}>
         <figure className="figure">
           <figcaption className="figure__figcaption">
             <img className="figure__image" src={card?.link} alt={card?.name}/>
@@ -18,7 +18,7 @@ function ImagePopup({card, onClose}) {
 
     </article>
   );
-  
+
 };
 
 export default ImagePopup;
