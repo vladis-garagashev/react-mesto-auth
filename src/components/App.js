@@ -75,7 +75,12 @@ function App() {
       setIsMenuOpen(false);
     };
 
-  }, [mobileWidth])
+  }, [mobileWidth]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleEscClose);
+    return () => document.removeEventListener('keydown', handleEscClose);
+  });
 
   //-----------------------------------
 
@@ -275,7 +280,7 @@ function App() {
   //-----------------------------------
 
   return (
-    <div className="page__container" onKeyDown={handleEscClose}>
+    <div className="page__container">
 
       <CurrentUserContext.Provider value={currentUser}>
         <Switch>
