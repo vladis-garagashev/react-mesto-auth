@@ -11,7 +11,7 @@ function AuthForm({handleAuth, isLoading, btnText}) {
   //-----------------------------------
 
   // Обработчик изменения инпутов
-  function handleChange(evt) {
+  const handleChange = (evt) => {
     const {name, value} = evt.target;
     setData({
       ...data,
@@ -22,7 +22,7 @@ function AuthForm({handleAuth, isLoading, btnText}) {
   //-----------------------------------
 
   // Обработчик сабмита формы
-  function handleSubmit(evt) {
+  const handleSubmit = (evt) => {
     evt.preventDefault();
     const {email, password} = data;
     handleAuth({email, password});

@@ -29,7 +29,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoading}) {
   //-----------------------------------
 
   // Обработчик изменения инпутов
-  function handleChange(evt) {
+  const handleChange = (evt) => {
     const {name, value} = evt.target;
     setData({
       ...data,
@@ -40,7 +40,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoading}) {
   //-----------------------------------
 
   // Обработчик сабмита формы
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
 

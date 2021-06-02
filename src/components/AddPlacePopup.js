@@ -21,7 +21,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, isLoading}) {
   //-----------------------------------
 
   // Обработчик изменения инпутов
-  function handleChange(evt) {
+  const handleChange = (evt) => {
     const {name, value} = evt.target;
     setData({
       ...data,
@@ -32,7 +32,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, isLoading}) {
   //-----------------------------------
 
   // Обработчик сабмита формы
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     onAddPlace({

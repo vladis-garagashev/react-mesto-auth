@@ -66,12 +66,16 @@ function App() {
       })
       .catch(error => console.log(error));
 
+  }, []);
+
+  useEffect(() => {
+
     // Проверяем ширину экрана
     if (!mobileWidth) {
       setIsMenuOpen(false);
     };
 
-  }, [mobileWidth]);
+  }, [mobileWidth])
 
   //-----------------------------------
 
@@ -82,7 +86,7 @@ function App() {
   };
 
   // Функция регистрации пользователя
-  function handleRegister({email, password}) {
+  const handleRegister =({email, password}) => {
     setLoading(true)
     auth.register(password, email)
       .then(data => {
@@ -99,7 +103,7 @@ function App() {
   };
 
   // Функция авторизации пользователя
-  function handleLogin({email, password}) {
+  const handleLogin =({email, password}) => {
     setLoading(true)
     auth.authorise(password, email)
       .then(data => {
@@ -116,7 +120,7 @@ function App() {
   };
 
   // Функция деавторизации пользователя
-  function handleLogout() {
+  const handleLogout = () => {
     setLoggedIn(false);
     localStorage.removeItem('jwt');
     setUserData({
@@ -126,7 +130,7 @@ function App() {
   };
 
   // Функция проверки наличия токена
-  function checkToken() {
+  const checkToken = () => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth.getContent(jwt)
@@ -141,7 +145,7 @@ function App() {
 
   //-----------------------------------
   // Функция проставки и удаления лайков у карточки
-  function handleCardLike(card) {
+  const handleCardLike = (card) => {
 
     // Проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -158,32 +162,32 @@ function App() {
 
   // Обработчики открытия и закрытия попапов
 
-  function handleEditAvatarClick() {
+  const handleEditAvatarClick = () => {
     setEditAvatarPopupOpen(true);
   };
 
-  function handleEditProfileClick() {
+  const handleEditProfileClick = () => {
     setEditProfilePopupOpen(true);
   };
 
-  function handleAddPlaceClick() {
+  const handleAddPlaceClick = () => {
     setAddPlacePopupOpen(true);
   };
 
-  function handleCardDelete(card) {
+  const handleCardDelete = (card) => {
     setDeleteCardPopupOpen(true);
     setSelectedDeleteCard(card);
   };
 
-  function handleCardClick(card) {
+  const handleCardClick = (card) => {
     setSelectedCard(card);
   };
 
-  function handleInfoTooltipOpen() {
+  const handleInfoTooltipOpen = () => {
     setInfoTooltipPopupOpen(true);
   };
 
-  function closeAllPopups() {
+  const closeAllPopups = () => {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
@@ -193,7 +197,7 @@ function App() {
     setInfoTooltipPopupOpen(false);
   };
 
-  function handleEscClose(evt) {
+  const handleEscClose = (evt) => {
     const escapeKey = 'Escape';
     if (evt.key === escapeKey) {
       closeAllPopups()
@@ -203,7 +207,7 @@ function App() {
   //-----------------------------------
 
   // Обработчики обновления данных пользователя
-  function handleUpdateUser(formData) {
+  const handleUpdateUser = (formData) => {
     setLoading(true)
     api.editUserInfo(formData)
       .then(newUserData => {
@@ -216,7 +220,7 @@ function App() {
       });
   };
 
-  function handleUpdateAvatar(formData) {
+  const handleUpdateAvatar = (formData) => {
     setLoading(true)
     api.editUserAvatar(formData)
       .then(newUserData => {
@@ -232,7 +236,7 @@ function App() {
   //-----------------------------------
 
   // Обработчик добавления карточки
-  function handleAddPlaceSubmit(formData) {
+  const handleAddPlaceSubmit = (formData) => {
     setLoading(true)
     api.addCard(formData)
     .then(newCard => {
@@ -248,7 +252,7 @@ function App() {
   //-----------------------------------
 
   // Функция удаления карточки
-  function handleCardDeleteSubmit(card) {
+  const handleCardDeleteSubmit = (card) => {
     setLoading(true)
     api.deleteCard(card._id)
       .then(() => {
@@ -264,7 +268,7 @@ function App() {
   //-----------------------------------
 
   // Обработчик открытия и закрытия меню
-  function handleMenuButtonClick() {
+  const handleMenuButtonClick = () => {
     setIsMenuOpen(!isMenuOpen)
   };
 

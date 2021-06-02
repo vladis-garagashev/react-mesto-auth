@@ -19,7 +19,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, isLoading}) {
   //-----------------------------------
 
   // Обработчик изменения инпутов
-  function handleChange(evt) {
+  const handleChange = (evt) => {
     const {name, value} = evt.target;
     setData({
       ...data,
@@ -30,7 +30,7 @@ function EditAvatarPopup({isOpen, onClose, onUpdateAvatar, isLoading}) {
   //-----------------------------------
 
   // Обработчик сабмита формы
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     onUpdateAvatar({

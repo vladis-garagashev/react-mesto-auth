@@ -24,15 +24,15 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
 
   //-----------------------------------
 
-  function handleClick() {
+  const handleClick = () => {
     onCardClick(card);
   };
 
-  function handleLikeClick() {
+  const handleLikeClick = () => {
     onCardLike(card);
   };
 
-  function handleDeleteClick() {
+  const handleDeleteClick = () => {
     onCardDelete(card);
   };
 

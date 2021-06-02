@@ -5,7 +5,7 @@ import PopupWithForm from './PopupWithForm';
 function DeleteCardPopup({isOpen, onClose, isLoading, onCardDelete, card}) {
 
   // Обработчик сабмита формы
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     onCardDelete(card);
   };
