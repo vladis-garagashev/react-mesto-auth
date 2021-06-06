@@ -1,43 +1,44 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = "https://auth.nomoreparties.co";
 
 //-----------------------------------
 
 // Функция обработки ответа промиса
-const handleResponse = res => res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`);
+const handleResponse = (res) =>
+  res.ok ? res.json() : Promise.reject(`Ошибка ${res.status}`);
 
 //-----------------------------------
 
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      'password': password,
-      'email': email
-    })
-  }).then(res => handleResponse(res));
+      password: password,
+      email: email,
+    }),
+  }).then((res) => handleResponse(res));
 };
 
 export const authorise = (password, email) => {
   return fetch(`${BASE_URL}/signin`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      'password': password,
-      'email': email
-    })
-  }).then(res => handleResponse(res));
+      password: password,
+      email: email,
+    }),
+  }).then((res) => handleResponse(res));
 };
 
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization' : `Bearer ${token}`
-    }
-  }).then(res => handleResponse(res));
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) => handleResponse(res));
 };

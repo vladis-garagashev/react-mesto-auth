@@ -12,12 +12,10 @@
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
-
 }
 
 .form__submit-button:hover {
   opacity: .8;
-
 }
 
 @media screen and (max-width: 767px) {

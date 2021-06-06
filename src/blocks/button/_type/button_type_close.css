@@ -8,7 +8,6 @@
   position: absolute;
   top: -40px;
   right: -40px;
-
 }
 
 .button_type_close:focus {
@@ -18,7 +17,6 @@
 
 .button_type_close:hover {
   opacity: .6;
-
 }
 
 @media screen and (max-width: 767px) {
