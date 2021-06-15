@@ -72,7 +72,6 @@
 @import url(./blocks/form/__item/_element/form__item_element_email.css);
 @import url(./blocks/form/__item/_element/form__item_element_password.css);
 @import url(./blocks/form/__item-error/form__item-error.css);
-@import url(./blocks/form/__item-error/_visible/form__item-error_visible.css);
 @import url(./blocks/form/__submit-button/form__submit-button.css);
 @import url(./blocks/form/__submit-button/_type/form__submit-button_type_white.css);
 @import url(./blocks/form/__submit-button/_disabled/form__submit-button_disabled.css);
