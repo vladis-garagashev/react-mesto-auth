@@ -4,12 +4,39 @@ import { AppContext } from "../contexts/AppContext";
 function ImagePopup({ card }) {
   const value = useContext(AppContext);
 
+  //-----------------------------------
+
+  // Обработчик закрытия попапа при нажатии Esc
+  const isOpen = !!card;
+
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleEscapeClose = (event) => {
+      if (event.key === "Escape") {
+        value.onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscapeClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeClose);
+    };
+  }, [isOpen, value.onClose]);
+
+  // Обработчик закрытия попапа при клике по оверлею
+  const handleOverlayClose = (event) => {
+    if (event.target === event.currentTarget && isOpen) {
+      value.onClose();
+    }
+  };
+
+  //-----------------------------------
+
   return (
     <article
       className={`popup ${card ? "popup_opened" : ""}`}
-      onClick={value.onClose}
+      onMouseDown={handleOverlayClose}
     >
-      <div className="popup__container" onClick={(e) => e.stopPropagation()}>
+      <div className="popup__container">
         <figure className="figure">
           <figcaption className="figure__figcaption">
             <img className="figure__image" src={card?.link} alt={card?.name} />

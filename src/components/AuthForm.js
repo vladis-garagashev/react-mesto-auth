@@ -44,9 +44,7 @@ function AuthForm({ handleAuth, btnText }) {
           onChange={handleChange}
           required
         />
-        <span className="login__form-item_error" id="email-error">
-          {errors.email || ""}
-        </span>
+        <span className="login__form-item_error" id="email-error"></span>
       </section>
 
       <section className="form__section">
@@ -62,15 +60,12 @@ function AuthForm({ handleAuth, btnText }) {
           maxLength="200"
           required
         />
-        <span className="login__form-item_error" id="password-error">
-          {errors.password || ""}
-        </span>
+        <span className="login__form-item_error" id="password-error"></span>
       </section>
 
       <button
         className="form__submit-button form__submit-button_type_white"
         type="submit"
-        disabled={isValid ? false : true}
       >
         {value.isLoading ? "Загрузка..." : btnText}
       </button>

@@ -12,12 +12,37 @@ function PopupWithForm({
 }) {
   const value = useContext(AppContext);
 
+  //-----------------------------------
+
+  // Обработчик закрытия попапа при нажатии Esc
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleEscapeClose = (event) => {
+      if (event.key === "Escape") {
+        value.onClose();
+      }
+    };
+    document.addEventListener("keydown", handleEscapeClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeClose);
+    };
+  }, [isOpen, value.onClose]);
+
+  // Обработчик закрытия попапа при клике по оверлею
+  const handleOverlayClose = (event) => {
+    if (event.target === event.currentTarget && isOpen) {
+      value.onClose();
+    }
+  };
+
+  //-----------------------------------
+
   return (
     <article
       className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`}
-      onClick={value.onClose}
+      onMouseDown={handleOverlayClose}
     >
-      <div className="popup__container" onClick={(e) => e.stopPropagation()}>
+      <div className="popup__container">
         <form
           className="form"
           method="POST"

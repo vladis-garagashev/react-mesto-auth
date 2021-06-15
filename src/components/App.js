@@ -74,11 +74,6 @@ function App() {
     }
   }, [mobileWidth]);
 
-  useEffect(() => {
-    document.addEventListener("keydown", handleEscClose);
-    return () => document.removeEventListener("keydown", handleEscClose);
-  });
-
   //-----------------------------------
 
   // Функция обработчик ошибки
