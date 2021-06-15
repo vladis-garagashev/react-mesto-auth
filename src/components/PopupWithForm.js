@@ -1,7 +1,15 @@
 import React, { useContext } from "react";
 import { AppContext } from "../contexts/AppContext";
 
-function PopupWithForm({ name, title, btnText, children, isOpen, onSubmit }) {
+function PopupWithForm({
+  name,
+  title,
+  btnText,
+  children,
+  isOpen,
+  onSubmit,
+  isValid,
+}) {
   const value = useContext(AppContext);
 
   return (
@@ -21,7 +29,12 @@ function PopupWithForm({ name, title, btnText, children, isOpen, onSubmit }) {
 
           {children}
 
-          <button className="form__submit-button" type="submit">
+          <button
+            className={`form__submit-button ${
+              !isValid && "form__submit-button_disabled"
+            }`}
+            type="submit"
+          >
             {btnText}
           </button>
           <button

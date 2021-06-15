@@ -8,6 +8,6 @@
   top: calc(100% + 5px);
   left: 0;
 
-  opacity: 0;
+  opacity: 1;
   transition: opacity .2s;
 }

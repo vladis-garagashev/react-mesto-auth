@@ -2,45 +2,27 @@ import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 import PopupWithForm from "./PopupWithForm";
+import { useFormValidation } from "../hooks/useForm";
 
 function AddPlacePopup({ isOpen, onAddPlace }) {
   const value = useContext(AppContext);
 
-  const [data, setData] = useState({
-    name: "",
-    link: "",
-  });
+  const { values, handleChange, resetFrom, errors, isValid } =
+    useFormValidation();
 
   //-----------------------------------
 
+  // Сброс полей формы
   useEffect(() => {
-    setData({
-      name: "",
-      link: "",
-    });
-  }, [isOpen]);
-
-  //-----------------------------------
-
-  // Обработчик изменения инпутов
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
+    resetFrom();
+  }, [isOpen, resetFrom]);
 
   //-----------------------------------
 
   // Обработчик сабмита формы
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    onAddPlace({
-      name: data.name,
-      link: data.link,
-    });
+    onAddPlace(values);
   };
 
   //-----------------------------------
@@ -52,6 +34,7 @@ function AddPlacePopup({ isOpen, onAddPlace }) {
       btnText={value.isLoading ? "Сохранение..." : "Сохранить"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      isValid={isValid}
     >
       <section className="form__section">
         <input
@@ -60,13 +43,15 @@ function AddPlacePopup({ isOpen, onAddPlace }) {
           name="name"
           id="image-name"
           placeholder="Название"
-          value={data.name}
+          value={values.name}
           onChange={handleChange}
           minLength="2"
           maxLength="30"
           required
         />
-        <span className="form__item-error" id="image-name-error"></span>
+        <span className="form__item-error" id="image-name-error">
+          {errors.name || ""}
+        </span>
       </section>
       <section className="form__section">
         <input
@@ -75,11 +60,13 @@ function AddPlacePopup({ isOpen, onAddPlace }) {
           name="link"
           id="image-link"
           placeholder="Ссылка на картинку"
-          value={data.link}
+          value={values.link}
           onChange={handleChange}
           required
         />
-        <span className="form__item-error" id="image-link-error"></span>
+        <span className="form__item-error" id="image-link-error">
+          {errors.link || ""}
+        </span>
       </section>
     </PopupWithForm>
   );

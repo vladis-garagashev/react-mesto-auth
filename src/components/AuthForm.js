@@ -1,31 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../contexts/AppContext";
+import { useFormValidation } from "../hooks/useForm";
 
-function AuthForm({ handleAuth, isLoading, btnText }) {
+function AuthForm({ handleAuth, btnText }) {
   const value = useContext(AppContext);
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+
+  const { values, handleChange, resetFrom, errors, isValid } =
+    useFormValidation();
 
   //-----------------------------------
 
-  // Обработчик изменения инпутов
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
+  // Сброс полей формы
+  useEffect(() => {
+    resetFrom({});
+  }, [resetFrom]);
 
   //-----------------------------------
 
   // Обработчик сабмита формы
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const { email, password } = data;
-    handleAuth({ email, password });
+    handleAuth(values);
   };
 
   //-----------------------------------
@@ -45,11 +40,13 @@ function AuthForm({ handleAuth, isLoading, btnText }) {
           name="email"
           id="email"
           placeholder="Email"
-          value={data.email}
+          value={values.email}
           onChange={handleChange}
           required
         />
-        <span className="login__form-item_error" id="email-error"></span>
+        <span className="login__form-item_error" id="email-error">
+          {errors.email || ""}
+        </span>
       </section>
 
       <section className="form__section">
@@ -59,18 +56,21 @@ function AuthForm({ handleAuth, isLoading, btnText }) {
           name="password"
           id="password"
           placeholder="Пароль"
-          value={data.password}
+          value={values.password}
           onChange={handleChange}
           minLength="2"
           maxLength="200"
           required
         />
-        <span className="login__form-item_error" id="password-error"></span>
+        <span className="login__form-item_error" id="password-error">
+          {errors.password || ""}
+        </span>
       </section>
 
       <button
         className="form__submit-button form__submit-button_type_white"
         type="submit"
+        disabled={isValid ? false : true}
       >
         {value.isLoading ? "Загрузка..." : btnText}
       </button>

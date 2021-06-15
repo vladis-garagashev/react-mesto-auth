@@ -1,54 +1,33 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {  useContext, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { AppContext } from "../contexts/AppContext";
 
 import PopupWithForm from "./PopupWithForm";
+import { useFormValidation } from "../hooks/useForm";
 
 function EditProfilePopup({ isOpen, onUpdateUser }) {
+  const currentUser = useContext(CurrentUserContext);
   const value = useContext(AppContext);
 
-  const [data, setData] = useState({
-    name: "",
-    about: "",
-  });
-
-  // Подписка на контекст
-  const currentUser = useContext(CurrentUserContext);
+  const { values, handleChange, resetFrom, errors, isValid } =
+    useFormValidation();
 
   //-----------------------------------
 
   // После загрузки текущего пользователя из API
   // его данные будут использованы в управляемых компонентах.
   useEffect(() => {
-    setData({
-      name: currentUser?.name,
-      about: currentUser?.about,
-    });
-  }, [currentUser, isOpen]);
-
-  //-----------------------------------
-
-  // Обработчик изменения инпутов
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
+    if (currentUser) {
+      resetFrom(currentUser, {}, true);
+    }
+  }, [currentUser, resetFrom]);
 
   //-----------------------------------
 
   // Обработчик сабмита формы
   const handleSubmit = (e) => {
-    // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
-
-    // Передаём значения управляемых компонентов во внешний обработчик
-    onUpdateUser({
-      name: data.name,
-      about: data.about,
-    });
+    onUpdateUser(values);
   };
 
   //-----------------------------------
@@ -60,6 +39,7 @@ function EditProfilePopup({ isOpen, onUpdateUser }) {
       btnText={value.isLoading ? "Сохранение..." : "Сохранить"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      isValid={isValid}
     >
       <section className="form__section">
         <input
@@ -68,13 +48,15 @@ function EditProfilePopup({ isOpen, onUpdateUser }) {
           name="name"
           id="name"
           placeholder="Имя"
-          value={data.name || ""}
+          value={values.name || ""}
           onChange={handleChange}
           minLength="2"
           maxLength="40"
           required
         />
-        <span className="form__item-error" id="name-error"></span>
+        <span className="form__item-error" id="name-error">
+          {errors.name || ""}
+        </span>
       </section>
       <section className="form__section">
         <input
@@ -83,13 +65,15 @@ function EditProfilePopup({ isOpen, onUpdateUser }) {
           name="about"
           id="about"
           placeholder="О себе"
-          value={data.about || ""}
+          value={values.about || ""}
           onChange={handleChange}
           minLength="2"
           maxLength="200"
           required
         />
-        <span className="form__item-error" id="about-error"></span>
+        <span className="form__item-error" id="about-error">
+          {errors.about || ""}
+        </span>
       </section>
     </PopupWithForm>
   );

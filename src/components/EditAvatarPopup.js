@@ -1,43 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 import PopupWithForm from "./PopupWithForm";
+import { useFormValidation } from "../hooks/useForm";
 
-function EditAvatarPopup({ isOpen, onUpdateAvatar, isLoading }) {
+function EditAvatarPopup({ isOpen, onUpdateAvatar }) {
   const value = useContext(AppContext);
 
-  const [data, setData] = useState({
-    avatar: "",
-  });
+  const { values, handleChange, resetFrom, errors, isValid } =
+    useFormValidation();
 
   //-----------------------------------
 
+  // Сброс полей формы
   useEffect(() => {
-    setData({
-      avatar: "",
-    });
-  }, [isOpen]);
-
-  //-----------------------------------
-
-  // Обработчик изменения инпутов
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
+    resetFrom({});
+  }, [isOpen, resetFrom]);
 
   //-----------------------------------
 
   // Обработчик сабмита формы
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    onUpdateAvatar({
-      avatar: data.avatar,
-    });
+    onUpdateAvatar(values);
   };
 
   //-----------------------------------
@@ -49,6 +34,7 @@ function EditAvatarPopup({ isOpen, onUpdateAvatar, isLoading }) {
       btnText={value.isLoading ? "Сохранение..." : "Сохранить"}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      isValid={isValid}
     >
       <section className="form__section">
         <input
@@ -57,11 +43,13 @@ function EditAvatarPopup({ isOpen, onUpdateAvatar, isLoading }) {
           name="avatar"
           id="avatar"
           placeholder="Ссылка на картинку"
-          value={data.avatar}
+          value={values.avatar}
           onChange={handleChange}
           required
         />
-        <span className="form__item-error" id="avatar-error"></span>
+        <span className="form__item-error" id="avatar-error">
+          {errors.avatar || ""}
+        </span>
       </section>
     </PopupWithForm>
   );
