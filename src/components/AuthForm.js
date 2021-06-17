@@ -5,7 +5,7 @@ import { useFormValidation } from "../hooks/useForm";
 function AuthForm({ handleAuth, btnText }) {
   const value = useContext(AppContext);
 
-  const { values, handleChange, resetFrom } = useFormValidation();
+  const { inputValues, handleChange, resetFrom } = useFormValidation();
 
   //-----------------------------------
 
@@ -19,7 +19,7 @@ function AuthForm({ handleAuth, btnText }) {
   // Обработчик сабмита формы
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleAuth(values);
+    handleAuth(inputValues);
   };
 
   //-----------------------------------
@@ -39,7 +39,7 @@ function AuthForm({ handleAuth, btnText }) {
           name="email"
           id="email"
           placeholder="Email"
-          value={values.email}
+          value={inputValues.email}
           onChange={handleChange}
           required
         />
@@ -53,7 +53,7 @@ function AuthForm({ handleAuth, btnText }) {
           name="password"
           id="password"
           placeholder="Пароль"
-          value={values.password}
+          value={inputValues.password}
           onChange={handleChange}
           minLength="2"
           maxLength="200"
