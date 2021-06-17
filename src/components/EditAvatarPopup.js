@@ -7,7 +7,7 @@ import { useFormValidation } from "../hooks/useForm";
 function EditAvatarPopup({ isOpen, onUpdateAvatar }) {
   const value = useContext(AppContext);
 
-  const { values, handleChange, resetFrom, errors, isValid } =
+  const { inputValues, handleChange, resetFrom, errors, isValid } =
     useFormValidation();
 
   //-----------------------------------
@@ -22,7 +22,7 @@ function EditAvatarPopup({ isOpen, onUpdateAvatar }) {
   // Обработчик сабмита формы
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateAvatar(values);
+    onUpdateAvatar(inputValues);
   };
 
   //-----------------------------------
@@ -43,7 +43,7 @@ function EditAvatarPopup({ isOpen, onUpdateAvatar }) {
           name="avatar"
           id="avatar"
           placeholder="Ссылка на картинку"
-          value={values.avatar}
+          value={inputValues.avatar}
           onChange={handleChange}
           required
         />

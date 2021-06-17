@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../contexts/AppContext";
 import { useFormValidation } from "../hooks/useForm";
 
 function AuthForm({ handleAuth, btnText }) {
   const value = useContext(AppContext);
 
-  const { values, handleChange, resetFrom, errors, isValid } =
-    useFormValidation();
+  const { values, handleChange, resetFrom } = useFormValidation();
 
   //-----------------------------------
 

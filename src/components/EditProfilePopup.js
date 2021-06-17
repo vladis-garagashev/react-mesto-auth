@@ -9,7 +9,7 @@ function EditProfilePopup({ isOpen, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
   const value = useContext(AppContext);
 
-  const { values, handleChange, resetFrom, errors, isValid } =
+  const { inputValues, handleChange, resetFrom, errors, isValid } =
     useFormValidation();
 
   //-----------------------------------
@@ -27,7 +27,7 @@ function EditProfilePopup({ isOpen, onUpdateUser }) {
   // Обработчик сабмита формы
   const handleSubmit = (e) => {
     e.preventDefault();
-    onUpdateUser(values);
+    onUpdateUser(inputValues);
   };
 
   //-----------------------------------
@@ -48,7 +48,7 @@ function EditProfilePopup({ isOpen, onUpdateUser }) {
           name="name"
           id="name"
           placeholder="Имя"
-          value={values.name || ""}
+          value={inputValues.name || ""}
           onChange={handleChange}
           minLength="2"
           maxLength="40"
@@ -65,7 +65,7 @@ function EditProfilePopup({ isOpen, onUpdateUser }) {
           name="about"
           id="about"
           placeholder="О себе"
-          value={values.about || ""}
+          value={inputValues.about || ""}
           onChange={handleChange}
           minLength="2"
           maxLength="200"

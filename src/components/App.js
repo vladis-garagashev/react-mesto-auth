@@ -200,13 +200,6 @@ function App() {
     setInfoTooltipPopupOpen(false);
   };
 
-  const handleEscClose = (evt) => {
-    const escapeKey = "Escape";
-    if (evt.key === escapeKey) {
-      closeAllPopups();
-    }
-  };
-
   //-----------------------------------
 
   // Обработчики обновления данных пользователя

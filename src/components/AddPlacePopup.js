@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../contexts/AppContext";
 
 import PopupWithForm from "./PopupWithForm";
@@ -7,7 +7,7 @@ import { useFormValidation } from "../hooks/useForm";
 function AddPlacePopup({ isOpen, onAddPlace }) {
   const value = useContext(AppContext);
 
-  const { values, handleChange, resetFrom, errors, isValid } =
+  const { inputValues, handleChange, resetFrom, errors, isValid } =
     useFormValidation();
 
   //-----------------------------------
@@ -22,7 +22,7 @@ function AddPlacePopup({ isOpen, onAddPlace }) {
   // Обработчик сабмита формы
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddPlace(values);
+    onAddPlace(inputValues);
   };
 
   //-----------------------------------
@@ -43,7 +43,7 @@ function AddPlacePopup({ isOpen, onAddPlace }) {
           name="name"
           id="image-name"
           placeholder="Название"
-          value={values.name}
+          value={inputValues.name}
           onChange={handleChange}
           minLength="2"
           maxLength="30"
@@ -60,7 +60,7 @@ function AddPlacePopup({ isOpen, onAddPlace }) {
           name="link"
           id="image-link"
           placeholder="Ссылка на картинку"
-          value={values.link}
+          value={inputValues.link}
           onChange={handleChange}
           required
         />
